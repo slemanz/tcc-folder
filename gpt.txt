@@ -1,1 +1,184 @@
-Vamos escrever um referencial teórico juntos, preciso que você escreva de forma clara e boa de ler, usando citações indiretas. Irei te passar todas referencias, faça conforme a norma da ABNT 2023. Vamos começar pelo "SISTEMAS EMBARCADOS", escreve de 3 a 4 parágrafos, utilizando as referencias que irei passar, todos os parágrafos devem conter citações indiretas dos autores originais:
+Vamos escrever um referencial teórico juntos, preciso que você escreva de forma clara e boa de ler, usando apenas citações indiretas. Irei te passar todas referencias, interprete e faça conforme a norma da ABNT 2023. Vamos fazer o tópico "FIRMWARE", escreva de 2 a 3 parágrafos, utilizando as referencias que irei passar, todos os parágrafos devem conter citações indiretas dos autores originais:
+
+Leandro Kovacs - 2021 - site tecnoblog
+
+O firmware é um software no dispositivo de hardware que executa funções como tarefas básicas de entrada/saída e oferece as instruções necessárias para que o dispositivo se comunique com outros.
+
+Geralmente, é projetado para um software de alto nível e pode ser considerado “parcialmente permanente” porque é mantido o mesmo, a menos que seja atualizado de forma ativa pelo usuário.
+
+
+An Overview of Firmware Engineering - S. Davidson; B.D. Shriver (1978)
+
+Firmware engineering, in analogy to software engineering, covers
+the specification and design of microprograms, construction
+techniques, debugging, testing, verification, and maintenance.
+
+
+The first step in any software or firmware
+project is the detailed specification of what is to
+be accomplished. This step involves interaction
+with the eventual users of the system and other
+efforts to obtain a clear understanding of such
+factors as acceptable cost, interfaces with other
+systems, and size of the system.
+
+In some
+areas-higher-level language design, for instancework in firmware lags behind work in software,
+while in other areas firmware engineering research has kept pace with software engineering research.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Agora faça 4 parágrafos sobre o subtópico do firmware: "Drivers e código reutilizavél", usando citações indiretas para todos os parágrafos conforme a norma ABNT 2023, aqui estão as referencias a serem usadas para escrever:
+
+Livro: Embedded Systems Architecture - Tammy Noergaard (2013)
+
+Most embedded hardware requires some type of software initialization and management. The
+software that directly interfaces with and controls this hardware is called a device driver. All
+embedded systems that require software have, at the very least, device driver software in their
+system software layer. Device drivers are the software libraries that initialize the hardware and
+manage access to the hardware by higher layers of software. Device drivers are the liaison between
+the hardware and the operating system, middleware, and application layers. (See Figure 8-1.)
+The reader must always check the details about the particular hardware if the hardware
+component is not 100% identical to what is currently supported by the embedded system.
+Never assume existing device drivers in the embedded system will be compatible for
+a particular hardware part—even if the hardware is the same type of hardware that the
+embedded device currently supports! So, it is very important when trying to understand
+device driver libraries that:
+l	 Different types of hardware will have different device driver requirements that need to be met.
+l	 Even the same type of hardware, such as Flash memory, that are created by different
+manufacturers can require substantially different device driver software libraries to
+support within the embedded device.
+The types of hardware components needing the support of device drivers vary from board to
+board, but they can be categorized according to the von Neumann model approach introduced
+in Chapter 3 (see Figure 8-2). The von Neumann model can be used as a software model as
+well as a hardware model in determining what device drivers are required within a particular
+platform. Specifically, this can include drivers for the master processor architecture-specific
+functionality, memory and memory management drivers, bus initialization and transaction
+drivers, and I/O (input/output) initialization and control drivers (such as for networking,
+graphics, input devices, storage devices, or debugging I/O) both at the board and master
+CPU level.
+Device drivers are typically considered either architecture-specific or generic. A device driver
+that is architecture-specific manages the hardware that is integrated into the master processor
+(the architecture). Examples of architecture-specific drivers that initialize and enable
+components within a master processor include on-chip memory, integrated memory managers
+(memory management units (MMUs)), and floating-point hardware. A device driver that is
+generic manages hardware that is located on the board and not integrated onto the master
+processor. In a generic driver, there are typically architecture-specific portions of source code,
+because the master processor is the central control unit and to gain access to anything on the
+board usually means going through the master processor. However, the generic driver also
+manages board hardware that is not specific to that particular processor, which means that a
+generic driver can be configured to run on a variety of architectures that contain the related
+board hardware for which the driver is written. Generic drivers include code that initializes
+and manages access to the remaining major components of the board, including board buses 
+
+Again, device drivers may have all or some of these functions, and can integrate some of
+these functions into single larger functions. Each of these driver functions typically has code
+that interfaces directly to the hardware and code that interfaces to higher layers of software.
+In some cases, the distinction between these layers is clear, while in other drivers, the code is
+tightly integrated (see Figure 8-4).
+On a final note, depending on the master processor, different types of software can execute
+in different modes, the most common being supervisory and user modes. These modes
+essentially differ in terms of what system components the software is allowed access to, with
+software running in supervisory mode having more access (privileges) than software running
+in user mode. Device driver code typically runs in supervisory mode.
+
+The next several sections provide real-world examples of device drivers that demonstrate how
+device driver functions can be written and how they can work. By studying these examples,
+the reader should be able to look at any board and figure out relatively quickly what possible
+device drivers need to be included in that system, by examining the hardware and going
+through a checklist, using the von Neumann model as a tool for keeping track of the types of
+hardware that might require device drivers. While not discussed in this chapter, later chapters
+will describe how device drivers are integrated into more complex software systems.
+
+Site: Dev - Olayiwola Ayinde (2022)
+
+Reusable embedded software must have a good embedded design and architecture
+One of the reasons why many of us moved from Assembly to C language decades ago was because .asm is very difficult to reuse, maintain and scale. We only had the choice of writing firmware and not software, which means the code won't be resuable.
+
+Basically, a long lasting embedded code architecture must have at least three (3) layers which are Software, Firmware and Hardware.
+Embedded software engineers need to develop habit for a three layer architecture so that they can easily reuse and port code from one hardware to another. My embedded codes are always known to have the Driver layer (firmware) and the Application layer (software). The application layer has nothing to do with the hardware but fully depends on the driver layer. With this kind of architecture, your co-programmers or end-users don't need to learn any MCU datasheet or reference manual, they only have to focus on a specific device to write their code.
+
+Creating a layered architecture for the code is not just revelant but it's a MUST thing to do.
+
+Livro: Reusable Firmware Development - Jacob Beningo (2017)
+
+Resource-constrained embedded-software development has a tendency toward chaos.
+Back when the C programming language was originally introduced, best practices and
+layered software architectures did not exist. Embedded software was littered with goto
+statements, driver code was tightly coupled to the application code, and there was no
+distinction as to where the middleware started or ended. The result was a giant code
+mess that rightly deserved the name spaghetti code.
+Now, for those readers who have not yet drawn the connection, Beningo is an Italian
+name, and like any good Italian, a love of pasta is a given. In this instance, an analogy
+between pasta and the way that software is architected is completely appropriate. Take
+a moment to consider this: spaghetti is chaotic; noodles intertwine going this way and
+that way, resulting in a complete lack of structure. Writing unstructured code is exactly
+like spaghetti; with each bite you have no clue what you are going to get! (At least with
+spaghetti it will be tasty!)
+On the other hand, there is lasagna! The noodles are layered, giving the meal
+structure and order. Code developed using layers is not only easier to understand, but
+it also has the potential to have one layer removed and a new layer added, basically 
+allowing for reuse and ease in maintainability. (At times, I have been tempted to swap
+out lasagna layers, but I’ve always found it’s just better to eat it!) Remember—we want
+to write lasagna code, not spaghetti code!
+
+-------------------------------------------------------------------------------------------------------------------
+
+Agora faça 3 parágrafos sobre o subtópico do firmware: "Bootloader", usando citações indiretas para TODOS os parágrafos conforme a norma ABNT 2023, aqui estão as referencias a serem usadas para escrever (pode ser usado dois parágrafos para o Beningo):
+
+Report: Bootloader Design for Microcontrollers  - Jacob Beningo (2015)
+
+For an embedded software engineer, a boot-loader requires a full understanding of how a
+processor works, how to utilize its memory and how to work on the processor at the lowest levels.
+Boot-loader development can be an extremely challenging endeavor to undertake but absolutely a
+rewarding one. Once a developer has gone through the process, each additional boot-loader
+becomes easier and easier to implement by following a common and consistent approach to bootloader design. 
+
+
+Boot-loaders can come in many different sizes and in many different flavors but in general
+the operation of a system with a boot-loader is relatively standard. 
+A boot-loader in itself is not that different from a standard application; in fact, it is a
+standard application. What makes a boot-loader special is that it is sharing flash space with another
+application and has the capability to erase and program a new application in its place. Like every
+other application, one of the first priorities of the boot-loader is to initialize the processor and the
+minimum number of peripherals required to carry out boot-loading functions. It’s best to keep the
+use of peripherals to as few as possible in the boot-loader in order to attempt to maximize the flash
+space that will be available for the application code.
+There are two behavioral models that describe how a boot-loader can behave. In the first
+model, the boot-loading process is completely automated and self-contained within the system. An
+example of this would be an SD card boot-loader. The boot-loader would automatically detect the
+new firmware and manage its own flashing process. Commands from an external source would not
+be required to successfully carry out the boot-loading process.
+In the second model, the system does not automatically handle the boot-loading process
+itself. Instead, the boot-loader initializes into an idle state and awaits instructions from an outside
+source. This source would typically be a pc based software application that commands the bootloader into the different states necessary to flash a new image onto the system. The primary reason
+for the external software application to command the process is that in most applications without
+an SD card, there is not sufficient space to retrieve the whole software image. Instead, an external
+source with the image acts as the master of the boot-loading process. This paper will focus on the
+later model.
+Each boot-loader will be unique in the number and type of commands that are supported. A
+sophisticated boot-loader will have more commands than a simple boot-loader. Flash usage for the
+boot-loader increases with each command that is supported potentially resulting in less space for
+the application image. At a minimum the boot-loader should support three commands. 
+
+Livro: Embedded Systems Architecture - Daniele Lacemera (2023)
+
+Booting a target through a bootloader is useful in several cases. In a real-life scenario, being able to
+update the running software on devices in a remote location means that developers are able to fix
+bugs and introduce new features after the first version of the embedded system has been deployed.
+This represents a huge advantage for maintenance when a bug is discovered in the field, or when the
+software has to be re-engineered to adapt to changes in requirements. Bootloaders may implement
+automatic remote upgrades and other useful features, such as the following:
+• Loading of the application image from an external storage
+• Verification of the integrity of the application image before boot
+• Failover mechanisms in case of a corrupted application
+Multiple bootloaders can be chained to perform a multiple-stage boot sequence. This allows you
+to have separate software images for the multiple boot stages, which can be uploaded to the flash
+independently. A first-stage boot, when present, is usually very simple and used to simply select the
+entry point for the next stage. However, in some cases, early stages benefit from slightly more complex 
+designs to implement software upgrade mechanisms or other features. The example proposed here
+shows the separation between two boot stages, achieved using the functionalities available in many
+Cortex-M processors. The only purpose of this simple bootloader is to initialize the system for booting
+the application in the next stage.
+
+---------------------------------------------------------------------------------------------------------------------------------------
