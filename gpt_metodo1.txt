@@ -394,3 +394,64 @@ necessidades de conectividade modernas.
 4. MATERIAIS E MÉTODOS
 <final do meu tcc>
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+## 4 MATERIAIS E MÉTODOS
+
+Este capítulo descreve a metodologia empregada na investigação das capacidades do Open CPU do módulo NINA B306, através do desenvolvimento de uma aplicação genérica capaz de controlar a velocidade e a direção de um motor de passo, além de realizar a leitura de um sensor de temperatura. A pesquisa adotará uma abordagem prática e aplicada, focando em experimentos e desenvolvimento em ambientes de sistemas embarcados.
+
+### 4.1 Tipo de Pesquisa
+
+O presente trabalho é caracterizado como uma pesquisa aplicada, voltada para a exploração e implementação de soluções práticas utilizando as capacidades do módulo NINA B306. O objetivo deste tipo de pesquisa é não apenas compreender as especificações do módulo, mas também testar suas funcionalidades em situações do mundo real, contribuindo para a aplicação de conhecimentos teóricos em problemas práticos.
+
+### 4.2 Materiais Utilizados
+
+Os materiais utilizados para a realização do projeto incluem:
+
+- **Módulo NINA B306**: Um módulo que integra o microcontrolador nRF52840, essencial para a execução das aplicações embarcadas.
+- **Placa Arduino Nano BLE**: Funcionará como a base do projeto, fornecendo a interface necessária para o desenvolvimento e a implementação da aplicação.
+- **Gravador JLINK**: Utilizado para programar o microcontrolador via protocolo SWD, permitindo a escrita de códigos diretamente nos registradores.
+- **Componentes eletrônicos**: Resistores, capacitores, transistores e outros componentes necessários para montar o circuito do controlador de motor e sensores.
+
+### 4.3 Estrutura do Sistema Embarcado
+
+A aplicação será desenvolvida em uma arquitetura de sistema embarcado baseada em camadas, composta por três principais:
+
+#### 4.3.1 Camada de Hardware
+
+Nesta camada, serão estabelecidas as conexões elétricas necessárias para o funcionamento do motor de passo e do sensor de temperatura. A disposição dos componentes será organizada de forma a garantir uma melhor eficiência e facilitar a montagem em protoboard.
+
+#### 4.3.2 Camada de Software
+
+A camada de software é dividida em duas partes: 
+- **Drivers de Baixo Nível**: Responsáveis pela interação direta com os registradores do microcontrolador, possibilitando o acesso a funcionalidades básicas como controle de pinos e configuração de interfaces de comunicação (UART, SPI e I2C).
+- **Drivers de Alto Nível**: Interfaces de software que serão acessadas pela camada de aplicação, permitindo uma interação simplificada com o hardware.
+
+#### 4.3.3 Camada de Aplicação
+
+A camada de aplicação será composta por um código de alto nível que implementará a lógica de controle do motor de passo e a leitura do sensor de temperatura, podendo ser facilmente trocada ou reutilizada em futuras implementações.
+
+### 4.4 Fluxo de Desenvolvimento
+
+O processo de desenvolvimento seguirá um fluxograma conforme detalhado abaixo:
+
+1. **Desenvolvimento dos Drivers de Baixo Nível**: Iniciará o repositório da aplicação e o makefile para compilação do projeto, criando inicialmente os drivers para testar as funcionalidades básicas do NINA B306.
+   
+2. **Desenvolvimento de Hardware**: Criação do diagrama esquemático e montagem do circuito em uma protoboard para validação.
+
+3. **Desenvolvimento Paralelo**: As etapas de desenvolvimento do driver superior e do código de alto nível da camada de aplicação serão realizadas em paralelo.
+
+4. **Teste e Validação**: A unificação da etapa de teste e validação acontecerá com o hardware montado em protoboard e o firmware em execução.
+
+5. **Produção de uma PCI**: Por fim, será elaborado um protótipo de placa de circuito impresso (PCI) para visualizar a aplicação em um formato de produto real.
+
+### 4.5 Testes e Validação
+
+Os testes serão realizados em diversas etapas, avaliando o desempenho do controlador de motor e a precisão da leitura do sensor de temperatura. Será estabelecido um método de validação para avaliar os resultados obtidos, garantindo a funcionalidade e a eficiência da aplicação desenvolvida.
+
+### 4.6 Considerações Éticas
+
+Embora a pesquisa seja predominantemente técnica, a segurança e a confiabilidade das aplicações desenvolvidas serão constantes levadas em consideração, especialmente no que se refere à interação de dispositivos com os usuários. A documentação adequada e a realização de testes rigorosos visam assegurar padrões éticos de desenvolvimento.
+
+Ao seguir esta metodologia, espera-se explorar efetivamente as capacidades do Open CPU do NINA B306 e contribuir significativamente para a área de desenvolvimento de aplicações em sistemas embarcados.
