@@ -1,3 +1,6 @@
+Título: EXPLORAÇÃO DAS CAPACIDADES DO OPEN CPU DO MÓDULO NINA B306 PARA
+DESENVOLVIMENTO DE APLICAÇÕES EM SISTEMAS EMBARCADOS
+
 2 OBJETIVOS
 
 Este capítulo apresenta o objetivo geral e os objetivos específicos.
