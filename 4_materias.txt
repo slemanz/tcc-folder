@@ -1,0 +1,168 @@
+Mantendo o contexto e seguindo o mesmo modelo e ideia, para algumas seções anteriores: 
+
+4 MATERIAIS E MÉTODOS
+
+Este capítulo descreve a metodologia empregada na investigação das capacidades do Open CPU do módulo NINA-B306. Para tal, foi desenvolvido um dispositivo de coleta de dados que registra a temperatura ambiente em um local específico, possibilitando a extração externa das informações para análises posteriores.
+
+4.1 MATERIAIS UTILIZADOS
+
+Os materiais utilizados para a realização do projeto incluem, o módulo NINA B306, que será utilizado a partir da placa Arduino Nano 33 BLE Sense Revisão 2. Será usado inicalmente um sensor de temperatura que está junto a placa do arduino, um módulo de memória flash NOR e um módulo conversor serial para USB. Além disso será usado um gravador JLink e componentes eletrônicos diversos.
+
+4.1.1 Módulo NINA-B306
+
+O módulo NINA-B306 é um módulo que possui capacidade de operar com Bluetooth de baixa energia (Bluetooth low energy), que incorporá um microcontrolador interno. Possui uma dimensão compacta e dispõe de 38 pinos de propósito geral programáveis, o que permite uma flexibilidade em aplicações diversas, além de suportar interfaces como UART, SPI, I2C (TWI) e conversor analógico-digital. Além disso, esse módulo apresenta um cristal de baixa potência interno de 64 MHz (U-BLOX, 2023). A Figura 6 apresenta o módulo.
+
+[FIG 6]
+
+No coração do NINA-B306 está o microcontrolador nRF52840, que utiliza a arquitetura ARM Cortex-M4 com unidade de ponto flutuante (FPU). Este microcontrolador é equipado com 1 MB de memória flash e 256 kB de RAM, permitindo o armazenamento e a execução de aplicações complexas. O nRF52840 suporta a interface do Bluetooth 5, além de apresentar periféricos recursos avançados de segurança, incluindo criptografia AES e um gerador de números aleatórios. (NORDIC SEMICONDUCTOR, 2024). O diagrama de blocos do microcontrolador é apresentado na Figura 7.
+
+4.1.2 Arduino Nano 33 BLE Sense Revisão 2
+
+A placa Arduino Nano 33 BLE Sense Revisão 2 será utilizada no projeto da aplicação para facilitar o acesso ao módulo NINA-B306, contribuindo para a simplificação da
+implementação do sistema inicial. A placa possui dimensões compactas de 45x18 mm, e conta com um regulador de alimentação de 3,3V integrado, além de alguns sensores integrados como o de sensor de temperatura que será utilizado no dispositivo (ARDUINO, 2024).
+
+A Figura 8 apresenta a placa. É importante destacar que essa escolha foi feita visando o protótipo e testes iniciais, visto que a placa permite o acesso ao módulo NINA-B306 por meio de conectores facilmente adaptáveis em protoboard.
+
+[FIG 8]
+
+O sensor de temperatura integrado se trata de um HS3003, que é um circuito integrado de alta precisão que combina medição de temperatura e umidade relativa em um único dispositivo. O sensor apresenta estabilidade, podendo ler de 0 a 70 °C sem necessidade de calibração pelo usuário. Possui uma saída digital através da interface I2C  e tem uma resoluação de até 14 bits (RENESAS, 2024).
+
+4.1.3 Memória Flash Externa
+
+Será utilizado uma memória flash do tipo NOR para armazenamento de dados não volateis do dispositivo de coleta de dados. A memória será a W25Q64, com capacitade para 64Mbits (8MBytes), além disso posui mais 100 mil ciclos de gravação e pelo menos 20 anos de retenção, utiliza interface SPI para armazenar e extrair dados da memória (WINDBOND, 2017).
+
+4.1.4 Conversor serial para USB
+
+Será utilizado um módulo inicialmente para converter dados USB para serial um módulo FTDI que utiliza o chip FT232RL, com isso, dará para conectar dispositivos com interface TTL ao computador e fazer trocas de dados (FTDI CHIP, 2021). 
+
+4.1.3 Outros materiais
+
+Será utilizado um gravador J-Link para programar o microcontrolador por meio do protocolo SWD, o que possibilitará uma interface para a programação do firmware e a depuração do projeto. Além disso, serão empregados diversos componentes eletrônicos, como resistores, capacitores e transistores, circuitos integrados, que são essenciais para a montagem do dispositivo. A escolha desses materiais garantirá a funcionalidade e a confiabilidade do sistema, permitindo a integração adequada entre os diferentes elementos do projeto.
+
+4.2 ESTRUTURA DO SISTEMA EMBARCADO
+
+Seguindo a ideia de camadas de código apresentada por Noergaard (2013), a Figura 9 demonstra como a aplicação será desenvolvida nesta arquitetura de sistema embarcado baseada em camadas, composta por três principais: camada de hardware, camada de software e camada de aplicação.
+
+[FIG 9]
+
+4.2.1 Camada de hardware
+Nesta camada mais baixa, serão estabelecidas as conexões elétricas
+necessárias para o funcionamento do motor de passo e do sensor de temperatura. A
+disposição dos componentes será organizada de forma a garantir uma melhor
+eficiência e facilitar a montagem em protoboard, e de uma futura placa de circuito
+impresso.
+4.2.2 Camada de software
+
+A camada de software é internamente dividida em duas partes:
+
+- Drivers de Baixo Nível: Responsáveis pela interação direta com os
+registradores do microcontrolador, possibilitando o acesso a
+funcionalidades básicas como controle de pinos e configuração de
+interfaces de comunicação (UART, SPI, I2C e BLE).
+
+- Drivers de Alto Nível: Interfaces de software que serão acessadas pela
+camada de aplicação, permitindo uma interação simplificada com o
+hardware.
+
+É importante notar que durante este trabalho a palavra drivers é usada analogamente como módulos.
+
+4.2.3 Camada de aplicação
+
+A camada de aplicação será composta por um código de alto nível que implementará a inicialização do dispositivo, a lógica do funcionamento, estes de forma abstraída podendo ser facilmente modificada sem necessariamente ter um conhecimento detalhado sobre o hardware e drivers de baixo nível.
+
+4.3 FLUXO DE DESENVOLVIMENTO
+
+icialmente será definida a arquitetura do dispositivo, após isso, o processo de desenvolvimento seguirá um fluxograma detalhado na Figura 10.
+
+[FIG 10]
+
+O fluxo de desenvolvimento do projeto iniciará com a criação do repositório da aplicação e a configuração dos arquivos necessários para a compilação do projeto. Nesta fase, serão desenvolvidos os drivers de baixo nível, os quais têm como objetivo testar as funcionalidades básicas do módulo NINA-B306. Essa etapa é crucial para garantir que o hardware esteja operando conforme o esperado, permitindo a identificação de quaisquer ajustes necessários desde o início do processo. Em seguida, a atenção se voltará para o desenvolvimento de hardware, onde será elaborado o diagrama esquemático simples em forma de blocos e será feita a montagem do circuito em uma protoboard, possibilitando a validação do projeto até que se atinja um funcionamento satisfatório. Todo o código será feito em código C, sem utilizar nenhum tipo de biblioteca de abstração de hardware ou framework já prontos.
+
+Após o desenvolvimento do hardware, paralelamente, as etapas de desenvolvimento do driver de alto nível e do código da aplicação serão conduzidas, promovendo um fluxo de trabalho dinâmico e interativo. Assim, as funções de software poderão ser testadas em conjunto com o hardware, resultando em uma integração eficiente entre os componentes. A unificação da etapa de teste e validação ocorrerá com o hardware montado na protoboard e o firmware em execução, permitindo uma avaliação prática do sistema. Após a validação, o desenvolcimento de um protótipo de placa de circuito impresso (PCI) se tornará a próxima etapa, oferecendo uma visualização do projeto em um formato de produto real, facilitando a visualização. A ideia central da placa é servir apenas como modelo, então por isso não será produzida realmente, apenas será um projeto.
+
+
+
+-----------------------------------------
+
+4 MATERIAIS E MÉTODOS
+
+Este capítulo descreve a metodologia adotada na investigação das capacidades do Open CPU do módulo NINA-B306. Para isso, foi desenvolvido um dispositivo de coleta de dados que registra a temperatura ambiente em um local específico, permitindo a extração externa das informações para análises posteriores.
+
+4.1 MATERIAIS UTILIZADOS
+
+Os materiais utilizados na realização do projeto incluem o módulo NINA-B306, que será integrado à placa Arduino Nano 33 BLE Sense Revisão 2. Inicialmente, serão utilizados um sensor de temperatura embutido na placa do Arduino, um módulo de memória flash NOR e um conversor serial para USB. Adicionalmente, um gravador J-Link e diversos componentes eletrônicos também serão empregados.
+
+4.1.1 Módulo NINA-B306
+
+O módulo NINA-B306 opera com Bluetooth de baixa energia (BLE) e incorpora um microcontrolador interno. Com dimensões compactas, possui 38 pinos de propósito geral programáveis, oferecendo flexibilidade para diversas aplicações. Suporta interfaces como UART, SPI, I2C (TWI) e conversores analógicos-digital. O módulo conta ainda com um cristal interno de baixa potência de 64 MHz (U-BLOX, 2023). A Figura 6 apresenta o módulo.
+
+[FIG 6]
+
+No núcleo do NINA-B306 está o microcontrolador nRF52840, baseado na arquitetura ARM Cortex-M4, que inclui uma unidade de ponto flutuante (FPU). Este microcontrolador possui 1 MB de memória flash e 256 kB de RAM, o que possibilita o armazenamento e a execução de aplicações complexas. O nRF52840 suporta a interface Bluetooth 5 e possui avançados recursos de segurança, incluindo criptografia AES e um gerador de números aleatórios (NORDIC SEMICONDUCTOR, 2024). O diagrama de blocos do microcontrolador é mostrado na Figura 7.
+
+4.1.2 Arduino Nano 33 BLE Sense Revisão 2
+
+A placa Arduino Nano 33 BLE Sense Revisão 2 será utilizada para facilitar o acesso ao módulo NINA-B306, simplificando a implementação do sistema inicial. Com dimensões de 45x18 mm, a placa contém um regulador de alimentação de 3,3V integrado, além de sensores embutidos, incluindo um sensor de temperatura, que será utilizado no dispositivo (ARDUINO, 2024).
+
+A Figura 8 apresenta a placa. Essa escolha foi feita visando facilitar protótipos e testes iniciais, pois a placa permite o acesso rápido ao módulo NINA-B306 através de conectores facilmente adaptáveis em protoboards.
+
+[FIG 8]
+
+O sensor de temperatura integrado, HS3003, é um circuito integrado de alta precisão que combina medições de temperatura e umidade relativa em um único dispositivo. Ele é estável e pode medir temperaturas de 0 a 70 °C sem a necessidade de calibração pelo usuário. Possui saída digital via I2C e uma resolução de até 14 bits (RENESAS, 2024).
+
+#### 4.1.3 Memória Flash Externa
+
+Uma memória flash do tipo NOR, a W25Q64, será utilizada para o armazenamento de dados não voláteis do dispositivo de coleta. Esta memória possui capacidade de 64 Mbits (8 MBytes), com mais de 100 mil ciclos de gravação e pelo menos 20 anos de retenção, usando interface SPI para armazenar e extrair dados (WINDBOND, 2017).
+
+#### 4.1.4 Conversor Serial para USB
+
+Um módulo FTDI com o chip FT232RL será utilizado para converter dados USB para serial, permitindo conectar dispositivos com interface TTL ao computador e realizar trocas de dados (FTDI CHIP, 2021).
+
+#### 4.1.5 Outros Materiais
+
+Um gravador J-Link será utilizado para programar o microcontrolador via protocolo SWD, possibilitando a programação do firmware e a depuração do projeto. Adicionalmente, serão utilizados diversos componentes eletrônicos, como resistores, capacitores, transistores e circuitos integrados, essenciais para a montagem do dispositivo. A seleção desses materiais garantirá a funcionalidade e a confiabilidade do sistema, permitindo uma integração adequada entre os diferentes elementos do projeto.
+
+### 4.2 ESTRUTURA DO SISTEMA EMBARCADO
+
+Seguindo a abordagem em camadas proposta por Noergaard (2013), a Figura 9 ilustra como a aplicação será desenvolvida nesta arquitetura de sistema embarcado, composta por três camadas principais: camada de hardware, camada de software e camada de aplicação.
+
+[FIG 9]
+
+#### 4.2.1 Camada de Hardware
+
+Nesta camada, serão estabelecidas as conexões elétricas necessárias para o funcionamento do motor de passo e do sensor de temperatura. A disposição dos componentes será organizada para garantir eficiência e facilitar a montagem em protobords, prevendo uma futura placa de circuito impresso.
+
+#### 4.2.2 Camada de Software
+
+A camada de software é dividida em duas partes:
+
+- **Drivers de Baixo Nível**: Responsáveis pela interação direta com os registradores do microcontrolador, permitindo o controle dos pinos e a configuração das interfaces de comunicação (UART, SPI, I2C e BLE).
+
+- **Drivers de Alto Nível**: Interfaces de software que serão acessadas pela camada de aplicação, permitindo uma interação simplificada com o hardware.
+
+É importante notar que, ao longo deste trabalho, o termo "drivers" é utilizado de forma análoga a "módulos".
+
+#### 4.2.3 Camada de Aplicação
+
+A camada de aplicação será composta por um código de alto nível que implementará a inicialização do dispositivo e a lógica de funcionamento, de forma abstrata, permitindo modificações sem a necessidade de um conhecimento detalhado sobre o hardware e os drivers de baixo nível.
+
+### 4.3 FLUXO DE DESENVOLVIMENTO
+
+A definição da arquitetura do dispositivo será o primeiro passo, seguida por um processo de desenvolvimento, ilustrado no fluxograma da Figura 10.
+
+[FIG 10]
+
+O fluxo de desenvolvimento iniciará com a criação do repositório da aplicação e a configuração dos arquivos necessários para a compilação do projeto. Nessa fase, os drivers de baixo nível serão desenvolvidos para testar as funcionalidades básicas do módulo NINA-B306, etapa essencial para garantir o correto funcionamento do hardware desde o início. Depois, o foco se voltará ao desenvolvimento do hardware, incluindo a elaboração de um diagrama esquemático simples em forma de blocos e a montagem do circuito em uma protoboard, permitindo a validação do projeto até que funcione satisfatoriamente. Todo o código será escrito em C, sem utilizar bibliotecas de abstração de hardware ou frameworks prontos.
+
+Após o desenvolvimento do hardware, as etapas de desenvolvimento dos drivers de alto nível e do código da aplicação serão conduzidas em paralelo, promovendo um fluxo de trabalho dinâmico. As funções de software serão testadas em conjunto com o hardware, resultando em uma integração eficiente. A etapa de teste e validação final ocorrerá com o hardware montado na protoboard e o firmware em execução, permitindo uma avaliação prática do sistema. Após essa validação, a próxima etapa será o desenvolvimento de um protótipo de placa de circuito impresso (PCI), apresentando o projeto em um formato de produto real, embora a placa não será fisicamente produzida, servindo apenas como modelo.
+
+
+-----------------------------------------
+
+https://docs.arduino.cc/hardware/nano-33-ble-sense-rev2/
+https://store.arduino.cc/collections/boards-modules/products/nano-33-ble-sense-rev2?_pos=5&_fid=82ca900a0&_ss=c
+
+HS3003 - https://www.renesas.com/en/document/dst/hs3xxx-datasheet?srsltid=AfmBOoryreNdTlDcTGnIfWtP2wNTB3qkUeVQ69pQIMOFunIbK1L69vZs
+W25Q64 - https://www.winbond.com/hq/product/code-storage-flash-memory/serial-nor-flash/?__locale=en&partNo=W25Q64FV
+FT232RL - https://ftdichip.com/wp-content/uploads/2020/08/DS_FT232R.pdf
+
