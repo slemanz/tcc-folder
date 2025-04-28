@@ -110,11 +110,11 @@ A Figura 8 apresenta a placa. Essa escolha foi feita visando facilitar protótip
 
 O sensor de temperatura integrado, HS3003, é um circuito integrado de alta precisão que combina medições de temperatura e umidade relativa em um único dispositivo. Ele é estável e pode medir temperaturas de 0 a 70 °C sem a necessidade de calibração pelo usuário. Possui saída digital via I2C e uma resolução de até 14 bits (RENESAS, 2024).
 
-#### 4.1.3 Memória Flash Externa
+4.1.3 Memória Flash Externa
 
 Uma memória flash do tipo NOR, a W25Q64, será utilizada para o armazenamento de dados não voláteis do dispositivo de coleta. Esta memória possui capacidade de 64 Mbits (8 MBytes), com mais de 100 mil ciclos de gravação e pelo menos 20 anos de retenção, usando interface SPI para armazenar e extrair dados (WINDBOND, 2017).
 
-#### 4.1.4 Conversor Serial para USB
+4.1.4 Conversor Serial para USB
 
 Um módulo FTDI com o chip FT232RL será utilizado para converter dados USB para serial, permitindo conectar dispositivos com interface TTL ao computador e realizar trocas de dados (FTDI CHIP, 2021).
 
@@ -122,17 +122,17 @@ Um módulo FTDI com o chip FT232RL será utilizado para converter dados USB para
 
 Um gravador J-Link será utilizado para programar o microcontrolador via protocolo SWD, possibilitando a programação do firmware e a depuração do projeto. Adicionalmente, serão utilizados diversos componentes eletrônicos, como resistores, capacitores, transistores e circuitos integrados, essenciais para a montagem do dispositivo. A seleção desses materiais garantirá a funcionalidade e a confiabilidade do sistema, permitindo uma integração adequada entre os diferentes elementos do projeto.
 
-### 4.2 ESTRUTURA DO SISTEMA EMBARCADO
+4.2 ESTRUTURA DO SISTEMA EMBARCADO
 
 Seguindo a abordagem em camadas proposta por Noergaard (2013), a Figura 9 ilustra como a aplicação será desenvolvida nesta arquitetura de sistema embarcado, composta por três camadas principais: camada de hardware, camada de software e camada de aplicação.
 
 [FIG 9]
 
-#### 4.2.1 Camada de Hardware
+4.2.1 Camada de Hardware
 
-Nesta camada, serão estabelecidas as conexões elétricas necessárias para o funcionamento do motor de passo e do sensor de temperatura. A disposição dos componentes será organizada para garantir eficiência e facilitar a montagem em protobords, prevendo uma futura placa de circuito impresso.
+Nesta camada, serão estabelecidas as conexões elétricas necessárias para o funcionamento do dispositivo. A disposição dos componentes será organizada para garantir eficiência e facilitar a montagem em protobords, prevendo uma futura placa de circuito impresso.
 
-#### 4.2.2 Camada de Software
+4.2.2 Camada de Software
 
 A camada de software é dividida em duas partes:
 
@@ -142,11 +142,11 @@ A camada de software é dividida em duas partes:
 
 É importante notar que, ao longo deste trabalho, o termo "drivers" é utilizado de forma análoga a "módulos".
 
-#### 4.2.3 Camada de Aplicação
+4.2.3 Camada de Aplicação
 
 A camada de aplicação será composta por um código de alto nível que implementará a inicialização do dispositivo e a lógica de funcionamento, de forma abstrata, permitindo modificações sem a necessidade de um conhecimento detalhado sobre o hardware e os drivers de baixo nível.
 
-### 4.3 FLUXO DE DESENVOLVIMENTO
+4.3 FLUXO DE DESENVOLVIMENTO
 
 A definição da arquitetura do dispositivo será o primeiro passo, seguida por um processo de desenvolvimento, ilustrado no fluxograma da Figura 10.
 
