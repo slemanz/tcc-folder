@@ -33,7 +33,7 @@ Criar um protótipo funcional do dispositivo de coleta de dados em protoboard, i
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## 1. Introdução
+1. Introdução
 
 A evolução tecnológica nas últimas décadas tem possibilitado o desenvolvimento de sistemas embarcados com funcionalidades cada vez mais versáteis e acessíveis. Esses sistemas, que podem ser considerados computadores dedicados, desempenham um papel crucial em diversas aplicações do cotidiano, integrando eletrônica e software para a execução eficiente de tarefas específicas (EMBARCADOS, 2018).
 
@@ -47,15 +47,15 @@ Nesse contexto, a metodologia adotada inclui o desenvolvimento de drivers de bai
 
 O estudo é fundamentado em uma revisão de literatura que elucida os conceitos centrais relacionados a sistemas embarcados e suas aplicações, com ênfase na integração de tecnologias e na engenharia de firmware. A relevância deste projeto se justifica pelo crescimento das aplicações em sistemas embarcados e Internet das Coisas (IoT), que se tornam cada vez mais sofisticadas e inteligentes (SMARTSOC, 2024).
 
-## 2. OBJETIVOS
+2. OBJETIVOS
 
 Este capítulo apresenta o objetivo geral e os objetivos específicos deste trabalho.
 
-### 2.1 OBJETIVO GERAL
+2.1 OBJETIVO GERAL
 
 O objetivo geral deste trabalho é explorar as capacidades do Open CPU do módulo NINA-B306, desenvolvendo um dispositivo de coleta de dados para registrar a temperatura ambiente, a fim de entender suas funcionalidades e aplicabilidades em sistemas embarcados.
 
-### 2.2 OBJETIVOS ESPECÍFICOS
+2.2 OBJETIVOS ESPECÍFICOS
 
 Os objetivos específicos a serem alcançados são:
 - Compreender as funcionalidades básicas do módulo NINA-B306 e sua integração com a placa Arduino Nano 33 BLE Sense, analisando as características que possibilitam sua utilização em projetos de sistemas embarcados.
