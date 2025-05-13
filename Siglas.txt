@@ -1,0 +1,30 @@
+LISTA DE SIGLAS
+
+CPU	Central Processing Unit
+SPI	Serial Peripheral Interface
+I2C	Inter-Integrated Circuit
+TWI	Two-Wire Interface
+UART	Universal Asynchronous Receiver-Transmitter
+BLE	Bluetooth Low Energy
+IOT	Internet Of Things
+MCU	Micro Controller Unit
+ROM	Read-Only Memory
+RAM	Random Access Memory
+SOC	System On Chip
+GPIO	General Purpose Input-Output
+GSM	Global System for Mobile communication
+GPRS 	General Packet Radio Service
+PHY	Physical layer
+HCI	Host Controller Interface
+GATT	Generic Attribute profile
+ATT	Attribute protocol
+NOR	Not OR
+FPU 	Float Point Unit
+FTDI	Future Technology Devices International
+TTL 	Transistor-Transistor Logic
+SWD	Serial Wire Debug
+PCI	Placa de Circuito Impresso
+LED	Light-Emitting Diode
+RGB	Red Green Blue
+USB	Universal Serial Bus
+
