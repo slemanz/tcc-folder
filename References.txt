@@ -1,0 +1,31 @@
+References
+
+WINDBOND 2017 - https://www.winbond.com/hq/product/code-storage-flash-memory/serial-nor-flash/?__locale=en&partNo=W25Q64JV
+
+MAKING EMBEDDED - Sebastopol
+
+APPLIED EMBEDDED - Sebastopol
+
+RENESAS - https://www.renesas.com/en/products/general-parts/hs3003-high-performance-relative-humidity-and-temperature-sensor?queryID=714e653d4440799addcdbc02625f2c2a
+
+QUECTEL - https://forums.quectel.com/uploads/short-url/83RkGZzCRAmLnLF3RorJiuMBtco.pdf - Shanghai
+
+Noeergard - Newnes, Waltham, 2013
+
+Lacamera - Birmingham
+
+GUPTA - Artech House, 2016, Massachusetts.
+
+FTDI - https://ftdichip.com/wp-content/uploads/2020/08/DS_FT232R.pdf
+
+Embedded Hardware - O'Reilly Media Inc. , 2005, Sebastopol
+
+
+
+
+
+
+
+
+
+
