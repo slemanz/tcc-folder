@@ -14,14 +14,24 @@ Noeergard - Newnes, Waltham, 2013
 
 Lacamera - Birmingham
 
-GUPTA - Artech House, 2016, Massachusetts.
+GUPTA - Artech House, 2016, norwood.
 
 FTDI - https://ftdichip.com/wp-content/uploads/2020/08/DS_FT232R.pdf
 
 Embedded Hardware - O'Reilly Media Inc. , 2005, Sebastopol
 
+--------------------------------------------------------------------------------------------------------------------------------
 
 
+KOVACS - Rio de Janeiro
+
+Hiapsi - Mafeteng 
+
+HEYDON, Robin - Pearson, Upper Saddle River
+
+Beningo site - Linden
+
+Larry Bellehumeur - Calgary
 
 
 
