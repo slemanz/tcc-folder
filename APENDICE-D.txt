@@ -1,0 +1,9 @@
+No desenvolvimento deste trabalho, todo o código fonte utilizado pode ser acessado na plataforma GitHub. Para visualizar o código completo, o Apêndice D apresenta as instruções necessárias para acessá-lo. 
+
+Apêndice D: Acesso ao Código Fonte Completo
+
+Para acessar o código fonte completo utilizado neste trabalho, este está disponível no repositório público do GitHub. O leitor pode acessar a versão mais atualizada do código a partir do link abaixo:
+
+Repositório GitHub: github.com/slemanz/nina
+
+Dentro do repositório, o código está organizado na pasta "FW". Este diretório contém a implementação de todo o trabalho discutido nesta monografia, permitindo uma análise do desenvolvimento e da estrutura do projeto.
