@@ -1,79 +1,198 @@
-# 2.1. Confecção de Placas de Circuito Impresso
+# 2.1. PROJETO DO CIRCUITO REGULADOR DE TENSÃO
 
-## 2.1.1. O que foi feito
+### 2.1.1. O que foi feito
 
-A atividade compreendeu a confecção completa de placas de circuito impresso (PCIs) para o desenvolvimento de uma Unidade de Controle Eletrônico (ECU), abrangendo todas as fases do processo, desde a concepção inicial até a implementação final. O projeto envolveu tanto o desenvolvimento do esquemático quanto o design detalhado do layout da placa, considerando aspectos críticos como a integração de componentes e a compatibilidade entre sistemas. A implementação física contemplou tanto a fabricação quanto a montagem dos componentes, culminando em testes rigorosos de verificação. O processo foi conduzido seguindo metodologias padronizadas de desenvolvimento de hardware embarcado, garantindo a qualidade e confiabilidade do produto final. A documentação detalhada de cada etapa permitiu o acompanhamento sistemático do progresso do projeto.
-
-Durante a fase de especificação, foram definidos os requisitos técnicos essenciais para a ECU, incluindo parâmetros como consumo de energia, velocidade de processamento e capacidade de memória. A seleção criteriosa dos componentes levou em consideração fatores como tolerância térmica, durabilidade e compatibilidade com o sistema integrado. O planejamento prévio incluiu também a definição de protocolos de comunicação e interfaces necessárias para a operação efetiva da placa. A equipe manteve um controle rigoroso de todas as especificações técnicas ao longo do desenvolvimento. Os critérios de seleção foram estabelecidos com base em padrões industriais reconhecidos.
-
-A fase de prototipagem envolveu a criação de versões iniciais da placa para validação de conceitos e testes preliminares. Foram realizadas simulações detalhadas do comportamento elétrico e térmico dos componentes, permitindo identificar e corrigir possíveis problemas antes da fabricação em larga escala. O processo de validação incluiu análises de interferência eletromagnética e verificação de parâmetros críticos de funcionamento. Todas as modificações foram documentadas e incorporadas às especificações finais do projeto. A equipe realizou múltiplas iterações até alcançar o design otimizado.
+Foi realizado o projeto de um circuito regulador de tensão utilizando um regulador de baixa tensão de queda
+(Low Dropout), capaz de converter uma tensão de 5 volts para 3,3 volts.
 
 ## 2.1.2. Por que foi feito
 
-O objetivo principal desta etapa do projeto foi desenvolver uma solução robusta e eficiente para a ECU, garantindo um desempenho consistente e confiável do sistema embarcado. A necessidade de um layout eficiente na PCI era crítica para evitar problemas de funcionamento que poderiam comprometer toda a aplicação, como ruídos eletromagnéticos, quedas de tensão e instabilidade térmica. A qualidade do design influencia diretamente na precisão e velocidade de processamento dos sinais, além da durabilidade geral do equipamento. A equipe priorizou a adoção de boas práticas de engenharia para minimizar riscos operacionais.
-
-A implementação seguiu princípios fundamentais de engenharia de hardware, considerando aspectos como a distribuição adequada de energia, proteção contra surtos, e compatibilidade eletromagnética. O projeto levou em conta também requisitos de manutenibilidade e atualização futura, permitindo evoluções tecnológicas sem necessidade de redesenho completo. A equipe buscou equilibrar performance, custo e complexidade na escolha das soluções técnicas. Todos os parâmetros foram dimensionados considerando margens de segurança adequadas.
-
-A metodologia adotada priorizou a modularidade do design, permitindo a substituição ou atualização de componentes específicos sem afetar o funcionamento global do sistema. Esta abordagem facilita também a depuração e manutenção futuras, reduzindo tempo e custos operacionais. A equipe considerou ainda aspectos de escalabilidade para possíveis expansões do sistema. A documentação técnica foi elaborada de forma a permitir a replicação e modificação do projeto por outros profissionais.
+O projeto foi desenvolvido para alimentar o circuito do microcontrolador, permitindo que o micro operasse na
+tensão adequada.
 
 ## 2.1.3. Como foi feito
 
-O processo começou na fase de design, onde utilizamos o software Altium Designer para criar os esquemas elétricos e desenvolver o layout detalhado da placa. Foi realizada uma análise cuidadosa da disposição dos componentes, considerando aspectos como a proximidade entre elementos, fluxo térmico e trajetória das trilhas de conexão. A equipe implementou técnicas avançadas de routing para otimizar o uso do espaço disponível na placa. Foram estabelecidos critérios rigorosos para a seleção dos componentes baseados em especificações técnicas precisas.
+O circuito do regulador de tensão foi desenhado, conforme ilustrado na figura 1.
 
-Após a conclusão do design virtual, a fabricação da placa foi realizada por uma empresa especializada em PCBs, utilizando substrato FR-4 de alta qualidade. O processo de fotolitografia foi executado seguindo padrões industriais rigorosos, garantindo a precisão nas trilhas e vias. A equipe acompanhou todas as etapas do processo fabril, verificando a conformidade com as especificações técnicas estabelecidas. Foram realizadas inspeções visuais detalhadas após cada etapa do processo.
+![Projeto do circuito do regulador de tensão](images/fig1.png)
 
-Na fase de montagem, foram utilizados predominantemente componentes SMD (Surface Mount Device), que oferecem melhor performance e menor ocupação de espaço. A soldagem foi realizada com uma estação de soldagem a ar quente profissional, equipada com controle preciso de temperatura e fluxo de ar. A pasta de solda utilizada foi selecionada conforme especificações técnicas para garantir boas propriedades mecânicas e elétricas da junção. Foram adotadas técnicas padronizadas de montagem para garantir consistência.
+O design segue o sentido de fluxo da esquerda para a direita, com a entrada de energia de 5 volts posicionada à
+esquerda e a saída regulada de 3,3 volts um pouco mais à direita. A figura 2 apresenta uma visão mais detalhada
+das partes do circuito.
 
-Os testes elétricos foram realizados utilizando equipamentos especializados como multímetros digitais de alta precisão e osciloscópios. Foi verificada a continuidade entre os pontos críticos da placa, bem como a ausência de curtos-circuitos indesejados. A equipe realizou medições de tensão em todos os pontos de alimentação e verificou a integridade das conexões. Os resultados foram documentados e comparados com os valores teóricos esperados. Foram executados também testes funcionais em condições normais de operação.
+![Projeto do circuito do regulador de tensão detalhado](images/fig2.png)
 
-Na fase final, foram realizadas validações adicionais incluindo testes de funcionamento em temperatura ambiente controlada e análises de ruído eletromagnético. A equipe implementou um protocolo sistemático de verificação que contemplou todos os aspectos críticos do projeto. Os resultados obtidos foram documentados em relatórios técnicos detalhados, permitindo o acompanhamento futuro do comportamento da placa. Foram também elaborados procedimentos para manutenção preventiva e corretiva.
+Conseguimos ver que o circuito conta com duas indicações com led para mostrar que há energia, tanto na entrada
+do circuito quanto na saída.
+
+No detalhamento do circuito, é possível observar dois LEDs indicadores, que têm a função de sinalizar a presença
+de energia tanto na entrada quanto na saída. Esses LEDs visam a fácil verificação do estado do
+circuito, garantindo que o usuário possa rapidamente identificar se o circuito está operando corretamente.
+
+Para mitigar a interferência de ruídos comuns na fonte de alimentação, esta incluído capacitores de desacoplamento. Esses
+capacitores estão dispostos de maneira a filtrar ruídos tanto na entrada quanto na saída, assegurando uma operação
+mais estável do regulador.
+
+No centro do circuito, encontra-se o circuito integrado, identificado pela designação "U1". Este componente é responsável
+pela conversão de tensão, utilizando um método de controle interno que assegura uma queda de tensão no próprio componente,
+mantendo a saída estável e livre de flutuações indesejadas.
 
 ## 2.1.4. Qual a aprendizagem com a atividade
 
-Esta experiência proporcionou um aprendizado profundo sobre a importância fundamental do design adequado em projetos de hardware embarcado. A equipe adquiriu conhecimento prático sobre a seleção criteriosa de componentes e suas implicações no desempenho final do sistema. A experiência prática com soldagem de componentes SMD permitiu desenvolver habilidades técnicas específicas, além de compreender a importância da qualidade na execução desta etapa. Os testes realizados demonstraram a relevância da validação sistemática em cada fase do desenvolvimento.
+A realização deste projeto proporcionou aprendizagens significativas. Primeiro, foi possível aprofundar o conhecimento sobre a
+importância de um regulador de tensão, especialmente em aplicações que exigem uma tensão específica para o funcionamento adequado
+de componentes eletrônicos, como no caso dos microcontroladores.
 
-Durante o processo, foi possível observar a relação direta entre o planejamento inicial e o sucesso final do projeto. A equipe aprendeu a valorizar a documentação detalhada e a metodologia sistemática no desenvolvimento de hardware. A experiência reforçou a necessidade de considerar múltiplos aspectos simultaneamente, desde a compatibilidade entre componentes até a facilidade de manutenção futura. O trabalho em equipe permitiu compartilhar conhecimentos específicos de cada área envolvida.
+Além disso, a prática de desenhar circuitos de regulação de tensão e selecionar componentes adequados contribuiu para o desenvolvimento
+de habilidades de planejamento e análise de circuitos eletrônicos. A identificação de elementos como capacitores, LEDs e diodos de proteção
+destacou a relevância de componentes auxiliares no funcionamento geral do circuito.
 
-Os desafios encontrados durante o processo serviram como oportunidades de aprendizado significativas. A necessidade de resolver problemas técnicos específicos estimulou a criatividade e o pensamento crítico. A experiência prática com equipamentos especializados ampliou o conhecimento sobre ferramentas de medição e teste. A equipe desenvolveu uma maior compreensão sobre a importância da qualidade e precisão em cada etapa do desenvolvimento de hardware embarcado. Os resultados obtidos demonstraram a eficácia da metodologia adotada.
+# 2.2. PROJETO DO CIRCUITO DO MICROCONTROLADOR
 
-#2.2. Desenvolvimento de Firmware para a ECU
-## 2.2.1. O que foi feito
+### 2.2.1. O que foi feito
 
-O desenvolvimento do firmware para a ECU foi realizado utilizando o microcontrolador STM32G0, com implementação completa do código fonte sem dependência de bibliotecas de fornecedor. O projeto foi compilado utilizando o kit de ferramentas GCC da ARM, permitindo um controle total sobre o código gerado. A implementação focou na criação de código proprietário, garantindo a propriedade intelectual do produto. O desenvolvimento abrangeu desde a programação dos periféricos básicos até a implementação de protocolos de comunicação avançados. A equipe manteve um controle rigoroso sobre cada linha de código desenvolvida.
+Foi realizado o projeto do circuito do microcontrolador, incluindo circuitos auxiliares essenciais para o seu funcionamento apropriado.
 
-A arquitetura do sistema foi projetada considerando a modularidade e escalabilidade, permitindo futuras expansões e manutenções. O código foi estruturado em módulos independentes, facilitando a manutenção e atualizações futuras. Foram implementados mecanismos de tratamento de erros robustos e sistemas de logging para diagnóstico. A equipe adotou práticas de programação defensiva em todas as rotinas desenvolvidas.
+### 2.2.2. Por que foi feito
 
-O desenvolvimento incluiu a implementação de rotinas de inicialização do sistema, gerenciamento de memória e tratamento de interrupções. Foram criados mecanismos de proteção contra falhas e recuperação de erros, garantindo a robustez do sistema. A equipe implementou também sistemas de monitoramento de recursos e controle de tempo real. Todas as funcionalidades foram documentadas detalhadamente para facilitar a manutenção futura.
+A construção deste circuito foi motivada pela necessidade de integrar o microcontrolador como o núcleo central da placa. Ele
+desempenha a função de executar todas as operações lógicas, processar dados e coordenar ações, além de estabelecer comunicação
+com outras placas e controladores externos, o que é fundamental para a operação de sistemas embarcados.
 
-## 2.2.2. Por que foi feito
+### 2.2.3. Como foi feito
 
-A decisão de desenvolver o firmware sem utilizar bibliotecas do fornecedor foi estratégica, visando aumentar a propriedade intelectual do produto e reduzir dependências externas. Esta abordagem permitiu um controle total sobre o código desenvolvido, eliminando riscos associados a licenças de terceiros. A equipe pôde otimizar o código conforme as necessidades específicas do projeto, resultando em melhor performance e menor consumo de recursos.
+A escolha do microcontrolador STM32F405 foi uma etapa crítica do projeto, dado que ele possui 1 MB de memória não volátil e uma
+variedade de pinos de propósito geral que podem ser configurados tanto como entradas quanto saídas de sinais. Isso permite
+flexibilidade na interação com outros componentes do sistema. O STM32F405 também se destaca por contar com periféricos avançados,
+incluindo funções de leitura analógica e suporte a diversos protocolos de comunicação, como SPI, I2C e UART. Ademais, sua interface
+para comunicação CAN é particularmente relevante, pois é o principal protocolo utilizado em sistemas embarcados automotivos,
+facilitando a interação na aplicações de destino. A configuração do circuito é apresentada na figura 3.
 
-A implementação própria dos drivers permitiu uma maior flexibilidade e customização, adaptando-se perfeitamente às necessidades específicas da ECU. A equipe pôde otimizar cada rotina considerando os requisitos exatos do sistema, resultando em melhor eficiência energética e desempenho. Esta abordagem também facilitou a manutenção e atualizações futuras, pois não há dependência de atualizações de terceiros.
+![Projeto do circuito do microcontrolador](images/fig3.png)
 
-A escolha desta metodologia permitiu também o desenvolvimento de funcionalidades específicas que não estariam disponíveis em bibliotecas padrão. A equipe pôde implementar otimizações específicas para o hardware utilizado e criar soluções personalizadas para os desafios encontrados. Esta abordagem resultou em um produto mais robusto e adaptado às necessidades específicas da aplicação.
+A figura 4 detalha as principais partes do circuito de forma mais objetiva.
 
-## 2.2.3. Como foi feito
+![Projeto do circuito do microcontrolador detalhado](images/fig4.png)
 
-O desenvolvimento iniciou com um estudo aprofundado da arquitetura do STM32G0, focando em suas capacidades e limitações. A equipe realizou uma análise detalhada dos recursos disponíveis, incluindo memória, periféricos e capacidades de processamento. Esta fase inicial foi fundamental para definir a melhor abordagem para cada funcionalidade do sistema.
+O circuito apresenta o microcontrolador no centro e um cristal indicado com um valor de 8 MHz de oscilação,
+com o intuito de usar o PLL interno do microcontrolador para atingir um clock interno de 92 MHz.
+Dentro do circuito, o microcontrolador é centralizado e conectado a um cristal oscilador de 8 MHz. Esse cristal tem um papel
+na determinação da frequência de operação do microcontrolador, permitindo utilizar o PLL interno para alcançar um clock de
+92 MHz. Essa configuração não apenas aumenta a eficiência do processamento, mas também melhora a capacidade de resposta em
+aplicações que exigem alta performance.
 
-A implementação dos drivers foi realizada de forma sistemática, começando pelos periféricos básicos como GPIO e ADC, até os protocolos de comunicação mais complexos como CAN e I2C. Cada driver foi desenvolvido considerando a otimização de recursos e a robustez do sistema. Foram implementados mecanismos de buffer circular para tratamento eficiente de dados e sistemas de priorização de tarefas.
+Além do mais, foram implementados circuitos de desacoplamento tanto para a alimentação analógica quanto digital.
+Esses circuitos visam proporcionar uma fonte de alimentação mais estável e livre de ruídos, o que garante o correto funcionamento
+do microcontrolador e dos periféricos conectados.
 
-Os testes foram realizados em múltiplas etapas, começando com testes unitários de cada driver até a integração completa do sistema. A equipe implementou um framework de testes automatizado para validação contínua do código. Foram realizados testes de estresse e validação em condições extremas de operação, garantindo a robustez do sistema.
+Para facilitar a monitorização e o diagnóstico de funcionamento, o circuito inclui dois LEDs utilizados como indicadores visuais
+do estado operacional do microcontrolador. Através dos rótulos nos pinos, é possível visualizar a extensa rede de conexões que o
+microcontrolador possui. Embora existam muitas interações a serem descritas, uma explicação detalhada de cada conexão poderia
+tornar-se excessivamente prolixa e desnecessária para o entendimento geral do projeto.
 
-A otimização do código foi realizada em várias etapas, focando na redução do consumo de memória e melhoria da performance. Foram implementadas técnicas avançadas de programação, como uso de registradores e otimização de loops críticos. A equipe utilizou ferramentas especializadas para análise de performance e identificação de gargalos.
+### 2.2.4. Qual a aprendizagem da atividade
 
-A fase final incluiu a validação completa do sistema, com testes de campo e verificação de todos os requisitos funcionais. Foram realizados testes de compatibilidade com diferentes versões de hardware e validação de todos os protocolos de comunicação implementados. A documentação técnica foi atualizada com todas as especificações finais do sistema.
+A realização deste circuito proporcionou uma série de aprendizagens na área. Foi possivel ganhar uma compreensão significativa
+sobre a arquitetura e funcionamento do microcontrolador STM32F405, incluindo suas capacidades de processamento e interfaces de
+comunicação. Essa experiência prática foi fundamental para consolidar conceitos teóricos de eletrônica e programação de microcontroladores.
 
-## 2.2.4. Qual a aprendizagem com a atividade
+Além disso, o projeto ajudou a desenvolver habilidades de integração de circuitos, com a implementação de circuitos de desacoplamento e do cristal.
+A importância do design cuidadoso na seleção de componentes,enfatizou como pequenas decisões podem ter impactos significativos na performance geral do sistema.
 
-O desenvolvimento do firmware proporcionou um aprendizado profundo sobre a arquitetura do STM32G0 e suas capacidades. A equipe adquiriu experiência prática em programação de baixo nível e desenvolvimento de drivers personalizados. A implementação de protocolos de comunicação avançados permitiu um entendimento mais profundo sobre sistemas embarcados e suas interações.
+A experiência com a visualização do estado operacional através dos LEDs indicativos destacou a importância do feedback visual em projetos
+eletrônicos, permitindo uma interação mais intuitiva com o sistema. Por fim, a prática de documentar e detalhar o circuito fortaleceu a habilidade
+de comunicação técnica, essencial para a colaboração em projetos futuros.
 
-A experiência com testes de unidade e integração reforçou a importância da qualidade do código e da robustez do sistema. A equipe aprendeu técnicas avançadas de depuração e validação de sistemas embarcados. A otimização do código permitiu entender melhor o impacto das decisões de design no desempenho final do sistema.
+# 2.3. PROJETO DO CIRCUITO DRIVER DE MOSFETS
 
-O projeto demonstrou a importância do planejamento e da organização no desenvolvimento de sistemas complexos. A equipe aprendeu a trabalhar com prazos e a gerenciar a complexidade do código. A documentação do processo e dos resultados foi fundamental para o aprendizado e para a manutenção futura do sistema. A experiência prática com hardware real permitiu uma compreensão mais completa dos conceitos teóricos estudados.
+### 2.3.1. O que foi feito
 
+Foi realizado o projeto do circuito driver de MOSFETs, destinado ao controle das fases do motor sem escovas, além de incorporar um conversor
+de tensão capaz de transformar a tensão de entrada em 5 volts.
 
+### 2.3.2. Por que foi feito
 
+Este circuito foi desenvolvido para criar uma solução integrada que controla um motor sem escovas e oferece um conversor chaveado para fornecer
+5 volts à placa. Essa tensão é necessária para alimentar o circuito regulador que, por sua vez, ajusta a tensão para 3,3 volts,
+garantindo que todos os componentes operem conforme suas especificações.
 
+### 2.3.3. Como foi feito
 
+O circuito foi baseado no driver DRV8302, que se destaca por sua capacidade de controlar motores sem escovas de forma eficiente. Um dos principais
+recursos deste driver é a integração de um conversor chaveado, que foi configurado para regular a saída a 5 volts, com uma faixa de tensão de entrada
+variando de 10 a 30 volts. Essa funcionalidade é tem a função de garantir que o sistema possa operar de forma confiável em uma ampla gama de
+condições de alimentação. A figura 5 ilustra o circuito desenvolvido.
+
+![Projeto do circuito do driver de mosfets](images/fig5.png)
+
+A figura 6 detalha os principais circuitos auxiliares que suportam a operação do driver.
+
+![Projeto do circuito do driver de mosfets detalhado](images/fig6.png)
+
+É possível visualizar o conversor buck, que regula a tensão, e outros rótulos que se conectam às fases do motor. Entretanto, de forma parecida ao circuito
+do microcontrolador, uma explicação pormenorizada de cada parte do circuito poderia tornar-se excessivamente prolixa e não necessariamente contribuiria
+para o entendimento geral do sistema.
+
+Além disso, o circuito incorpora um sistema de desacoplamento, projetado para reduzir ruídos indesejados e garantir uma alimentação mais estável e
+limpa para o driver. Vários resistores e capacitores foram adicionados ao projeto para garantir que o driver funcione corretamente sob diferentes condições operacionais.
+
+A figura 7 apresenta os circuitos de MOSFETs responsáveis por chavear as fases do motor sem escovas, demonstrando como a potência é gerenciada dentro do sistema.
+
+![Projeto do circuito dos mosfets](images/fig7.png)
+
+O funcionamento do driver é orquestrado por meio do microcontrolador, que implementa a lógica programada. Essa programação controla a sequência de ativação
+dos MOSFETs, permitindo o controle do motor.
+
+### 2.2.4. Qual a aprendizagem da atividade
+
+A execução desta parte do projeto proporcionou uma rica bagagem de conhecimentos práticos e teóricos na área de controle de motores e circuitos eletrônicos.
+Pode-se compreender a importância do driver DRV8302 e suas funcionalidades, incluindo a integração de um conversor de tensão.
+
+O projeto também destacou o papel crítico do design de circuitos auxiliares, como os de desacoplamento, que são fundamentais para minimizar ruídos e
+garantir a estabilidade da operação. Aprender a implementar circuitos com resistores e capacitores para otimizar a performance do driver foi uma
+experiência prática valiosa.
+
+A visualização e o entendimento dos circuitos de MOSFETs, que conectam diretamente às fases do motor, ofereceram uma compreensão aprofundada de como
+o controle eletrônico se traduz em movimento físico.
+
+# 2.4. PROJETO DO CIRCUITO DA COMUNICAÇÃO CAN
+
+### 2.4.1. O que foi feito
+
+Foi desenvolvido um circuito para comunicação CAN, utilizando um transceptor que converte os sinais de transmissão e recepção em um sinal diferencial,
+conforme o protocolo.
+
+### 2.4.2. Por que foi feito
+
+Este circuito foi realizado devido à relevância do protocolo CAN, que é o principal meio de comunicação utilizado em sistemas automotivos.
+A capacidade desse protocolo de permitir a comunicação rápida e sem ruídos entre diferentes controleadores é fundamental para o funcionamento
+da máquina, onde a troca de informações em tempo real é importante.
+
+### 2.4.3. Como foi feito
+
+Para implementar a comunicação CAN, utilizou-se o circuito integrado SN65HVD230. ste transceptor foi escolhido por sua habilidade de
+converter sinais de transmissão e recepção em sinais diferenciais, que são menos suscetíveis a ruídos, aumentando assim a confiabilidade
+da comunicação. A figura 8 ilustra o circuito desenvolvido.
+
+![Projeto do circuito da comunicação CAN](images/fig8.png)
+
+A figura 9 apresenta um detalhamento dos componentes e da configuração do circuito.
+
+![Projeto do circuito da comunicação CAN detalhado](images/fig9.png)
+
+No circuito, encontra-se um conector projetado para facilitar a conexão com outros dispositivos no sistema. Junto ao conector, foi integrada
+uma proteção contra descargas eletroestáticas (ESD). Essa proteção é essencial, especialmente em ambientes automotivos, onde a interação
+humana com os conectores pode resultar em descargas que comprometam a integridade dos circuitos.
+
+Além disso, um filtro foi implementado para o par diferencial, com o intuito de minimizar ruídos e garantir uma transmissão limpa e estável dos sinais. 
+
+### 2.4.4. Qual a aprendizagem da atividade
+
+A realização desta parte do projeto proporcionou um aprendizado significativo sobre as tecnologias de comunicação em sistemas embarcados,
+mais especificamente na aplicação do protocolo CAN.
+
+Adquiririu-se conhecimento prático sobre a configuração do circuito de comunicação, além de compreender a estrutura e funcionamento do sinal
+diferencial, uma técnica fundamental para garantir a integridade dos dados em condições adversas. A implementação da proteção contra descargas
+eletrostáticas também enfatizou a necessidade de considerar fatores ambientais ao projetar circuitos eletrônicos.
+
+# 2.5. PROJETO DOS CIRCUITOS DE FILTRO DE LEITURA ANALÓGICA
