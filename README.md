@@ -1,3 +1,3 @@
-# FOLDER TCC
+# TCC Folder
 
-Repo para deixar todos conteudos do estudo do meu tcc!
+Repo para deixar meu TCC, defendido em 2025/1.
